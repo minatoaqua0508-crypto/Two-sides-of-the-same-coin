@@ -20,22 +20,7 @@ body {
   align-items: center;        /* 垂直置中 */
 }
 
-.credit1 {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  font-size: 12px;                  /* 比原本更小 */
-  color: rgba(68, 68, 68, 0.6);     /* 淡灰色，不那麼顯眼 */
-  background: rgba(255, 255, 255, 0.5); /* 半透明背景，存在感更弱 */
-  padding: 4px 6px;
-  border-radius: 4px;
-  box-shadow: none;                 /* 移除陰影，降低存在感 */
-  z-index: 500;                     /* 不用太高 */
-  transition: opacity 0.3s ease;    /* 滑過才稍微變清楚 */
-}
-.credit:hover {
-  opacity: 0.9;                     /* 滑過去才比較明顯 */
-}
+
 .container, .game-container {
   background: url("images/logo3.jpg") no-repeat center/cover;
   border-radius: 20px;
@@ -650,24 +635,4 @@ body {
 #playMusic:hover {
   background-color: #32CD32
 }
-
- .credit {
-    left: 50%;
-    right: auto;
-    bottom: 2px;                           /* 更靠下 */
-    transform: translateX(-50%);
-    font-size: 8px;                        /* 字體再小 */
-    padding: 1px 3px;                      /* 內距縮小，格子更緊湊 */
-    color: rgba(68, 68, 68, 0.5);          /* 淡灰色字體 */
-    background: rgba(255,255,255,0.15);    /* 更淡的背景 */
-    border-radius: 3px;                    /* 圓角也縮小 */
-    box-shadow: none;                      /* 移除陰影，低調 */
-    opacity: 0.6;                          /* 預設偏透明 */
-    transition: opacity 0.3s ease;
-  }
-
-  .credit:hover {
-    opacity: 1;                            /* 滑過才清楚一點 */
-  }
-
 }
