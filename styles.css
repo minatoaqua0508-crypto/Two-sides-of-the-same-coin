@@ -45,28 +45,7 @@ body {
   max-width: 600px;           /* ✅ 和 Google 首頁差不多寬 */
   padding: 20px;
 }
-/* 讓按鈕固定在畫面 */
-  #playMusic {
-    position: absolute;   /* 跟隨容器 */
-    top: 295px;
-    right: 170px;
 
-    width: 80px;
-    height: 46px;
-    font-size: 14px;
-
-    background-color: #f93ab3;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 99;
-}
-
-  #playMusic:hover {
-    background-color: #ff19e0; /* 滑過去顏色變深 */
-  }
 .game-header {
     text-align: center;
     margin-bottom: 2rem;
@@ -284,10 +263,12 @@ body {
 }
 
 .game-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;  /* 讓「重新開始」和「BGM」有間距 */
+
+justify-content: flex-start;  /* 水平靠左對齊 */
+      flex-wrap: nowrap;            /* 不換行，始終並排 */
 }
 
 .btn {
@@ -313,13 +294,18 @@ body {
 }
 
 .btn-secondary {
-    background: #e2e8f0;
-    color: #2d3748;
+  background: #e2e8f0;
+  color: #2d3748;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
-    background: #cbd5e0;
-    transform: translateY(-2px);
+  background: #cbd5e0;
+  transform: translateY(-2px);
 }
 
 .game-status {
@@ -541,133 +527,94 @@ body {
   opacity: 0.9;
 }
 
+#musicControl {
+  position: absolute;      /* 固定在螢幕上，可自由調整 */
+  top: 300px;           /* 你可以改這裡調整位置 */
+  right: 180px;           /* 你可以改這裡調整位置 */
+
+  width: 60px;
+  height: 30px;
+  font-size: 12px;
+
+  background-color: #f93ab3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 9999;
+  transition: background 0.3s ease;
+}
+
+#musicControl:hover {
+  background-color: #ff19e0;
+}
+/* 🔽 響應式規則：螢幕 ≤ 800px 就隱藏 */
+@media (max-width: 800px) {
+  #musicControl {
+    display: none;
+  }
+}
+
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     body {
-        background: #000000; /* 全白背景 */
-    }
-   #playMusic {
-    position: absolute;   /* 跟隨容器 */
-    top: 785px;
-    right: 200px;
-
-    width: 60px;
-    height: 36px;
-    font-size: 12px;
-
-    background-color: #228B22;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 99;
+  background: linear-gradient(135deg, #B7E0FF 0%, #FFF5CD 100%);/* 背景色 */
 }
-#playMusic:hover {
-  background-color: #32CD32;
-}
-    .game-container {
-        background-image: url("images/logo3.jpg");
-        background-size: cover;
-        background-position: center;
-        border-radius: 20px;
-        padding: 1.5rem;
-        max-width: 500px;  /* 平板縮小 */
-        min-height: 300px;
-        width: 100%;
-    }
-    
-    .game-title {
-        font-size: 2rem;
-    }
-    
-    .game-info {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .game-controls {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .board-cell.center-cell::after {
-        font-size: 1.4rem;
-    }
+  .game-controls {
+      display: flex;
+      justify-content: flex-start;  /* 水平靠左對齊 */
+      align-items: center;          /* 垂直置中 */
+      gap: 10px;                    /* 兩顆按鈕的間距 */
+      flex-wrap: nowrap;            /* 不換行，始終並排 */
+  }
+
+  #playMusic {
+      position: static;          /* 取消 absolute */
+      width: 80px;
+      height: 40px;
+      font-size: 12px;
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  #playMusic:hover {
+      background-color: #000000;
+      color: #ffffff;
+  }
 }
 
 @media (max-width: 480px) {
     body {
-        background: #000000; /* 全白背景 */
-    }
-    .game-container {
-        background-image: url("images/logo3.jpg");
-        background-size: cover;
-        background-position: center;
-        max-width: 700px;    /* 手機滿版 */
-        min-height: 250px;
-        padding: 2rem;
-    }
-    .game-title {
-        font-size: 1.6rem;
-    }
-    .game-subtitle {
-    font-size: 0.7rem;
-    color: #4a5568; /* 深灰色，比正文淡 */
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 0.5rem auto;
-    line-height: 1.6;
+  background: linear-gradient(135deg, #B7E0FF 0%, #FFF5CD 100%);/* 背景色 */
 }
-
-
-    .coin {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .coin-face {
-        font-size: 1.5rem;
-    }
-    #playMusic {
-    position: absolute;   /* 跟隨容器 */
-    top: 675px;
-    right: 50px;
-
-    width: 60px;
-    height: 36px;
-    font-size: 12px;
-
-    background-color:  #228B22;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 99;
-}
-#playMusic:hover {
-  background-color: #32CD32
-}
-
- .credit {
-    left: 50%;
-    right: auto;
-    bottom: 2px;                           /* 更靠下 */
-    transform: translateX(-50%);
-    font-size: 8px;                        /* 字體再小 */
-    padding: 1px 3px;                      /* 內距縮小，格子更緊湊 */
-    color: rgba(68, 68, 68, 0.5);          /* 淡灰色字體 */
-    background: rgba(255,255,255,0.15);    /* 更淡的背景 */
-    border-radius: 3px;                    /* 圓角也縮小 */
-    box-shadow: none;                      /* 移除陰影，低調 */
-    opacity: 0.6;                          /* 預設偏透明 */
-    transition: opacity 0.3s ease;
+  .game-controls {
+      display: flex;
+      justify-content: flex-start;  /* 水平靠左對齊 */
+      align-items: center;          /* 垂直置中 */
+      gap: 10px;                    /* 兩顆按鈕的間距 */
+      flex-wrap: nowrap;            /* 不換行，始終並排 */
   }
 
-  .credit:hover {
-    opacity: 1;                            /* 滑過才清楚一點 */
+  #playMusic {
+      position: static;          /* 取消 absolute */
+      width: 80px;
+      height: 40px;
+      font-size: 12px;
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
+  #playMusic:hover {
+      background-color: #000000;
+      color: #ffffff;
+  }
 }

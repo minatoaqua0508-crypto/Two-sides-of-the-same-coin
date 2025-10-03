@@ -19,28 +19,6 @@
     
 </head>
 <body>
-<!-- 背景音樂 -->
- <button id="playMusic">王のbgm</button>
-<audio id="bgm" loop>
-  <source src="sounds/videoplayback (online-audio-converter.com).mp3" type="audio/mpeg">
-  你的瀏覽器不支援音樂播放。
-</audio>
-
-<script>
-  const bgm = document.getElementById('bgm');
-  const btn = document.getElementById('playMusic');
-
-  btn.addEventListener('click', () => {
-    if (bgm.paused) {
-      bgm.play();
-      btn.textContent = "⏸ 暫停";   // 點下去時文字換成暫停
-    } else {
-      bgm.pause();
-      btn.textContent = "▶ 播放";   // 再點一次時換回播放
-    }
-  });
-</script>
-
 
     <div class="game-container">
         <header class="game-header">
@@ -68,9 +46,43 @@
         </main>
 
         <footer class="game-controls">
-            <button class="btn btn-secondary" id="restartBtn">重新開始</button>
-            <div class="game-status" id="gameStatus"></div>
-        </footer>
+  <button class="btn btn-secondary" id="restartBtn">重新開始</button>
+  <button class="btn btn-secondary" id="playMusic">▶ 播放</button>
+  <button class="bgm" id="musicControl">王的bgm</button>
+  <div class="game-status" id="gameStatus"></div>
+</footer>
+
+<!-- 背景音樂 -->
+<audio id="bgm" loop>
+  <source src="sounds/videoplayback (online-audio-converter.com).mp3" type="audio/mpeg">
+  你的瀏覽器不支援音樂播放。
+</audio>
+
+<script>
+  const bgm = document.getElementById('bgm');
+  const btn = document.getElementById('playMusic');
+  const musicBtn = document.getElementById('musicControl');
+
+  btn.addEventListener('click', () => {
+    if (bgm.paused) {
+      bgm.play();
+      btn.textContent = "⏸ 暫停";   // 播放後改成暫停
+    } else {
+      bgm.pause();
+      btn.textContent = "▶ 播放";   // 暫停後改回播放
+    }
+  });
+  // 第二顆按鈕（王的bgm）
+  musicBtn.addEventListener('click', () => {
+    if (bgm.paused) {
+      bgm.play();
+      musicBtn.textContent = "⏸ 暫停";
+    } else {
+      bgm.pause();
+      musicBtn.textContent = "▶ 播放";
+    }
+  });
+</script>
     </div>
 
 <!-- Mode Select Modal -->
@@ -115,7 +127,6 @@
             initializeGame();
         });
         </script>
-
 <div class="credit1">感謝 黃韋傑 提供</div>
 
 </body>
