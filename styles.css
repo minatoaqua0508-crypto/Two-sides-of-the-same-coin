@@ -542,7 +542,7 @@ justify-content: flex-start;  /* 水平靠左對齊 */
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 9999;
+  z-index: 99;
   transition: background 0.3s ease;
 }
 
